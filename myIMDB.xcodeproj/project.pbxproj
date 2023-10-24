@@ -75,6 +75,8 @@
 		E87AC06E2AE05F52004FB6CF /* VehicleListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87AC0502AE05F52004FB6CF /* VehicleListViewController.xib */; };
 		E87AC06F2AE05F52004FB6CF /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC0512AE05F52004FB6CF /* VehicleListViewController.swift */; };
 		E87AC0702AE05F52004FB6CF /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC0522AE05F52004FB6CF /* VehicleDetailViewController.swift */; };
+		E895FE422AE12907001E2304 /* CellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FE412AE12907001E2304 /* CellProvider.swift */; };
+		E895FE442AE13176001E2304 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FE432AE13176001E2304 /* CellType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +151,8 @@
 		E87AC0502AE05F52004FB6CF /* VehicleListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleListViewController.xib; sourceTree = "<group>"; };
 		E87AC0512AE05F52004FB6CF /* VehicleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		E87AC0522AE05F52004FB6CF /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
+		E895FE412AE12907001E2304 /* CellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProvider.swift; sourceTree = "<group>"; };
+		E895FE432AE13176001E2304 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		FAB1D7EE8A0BF1C88F6FB663 /* Pods-myIMDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myIMDB.release.xcconfig"; path = "Target Support Files/Pods-myIMDB/Pods-myIMDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +254,7 @@
 				E87AC0012AE05EAE004FB6CF /* LongTextTableViewCell.xib */,
 				E87AC0022AE05EAE004FB6CF /* StringValueTableViewCell.swift */,
 				E87ABFFD2AE05EAE004FB6CF /* StringValueTableViewCell.xib */,
+				E895FE432AE13176001E2304 /* CellType.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				E87AC0242AE05F31004FB6CF /* SpeciesProvider.swift */,
 				E87AC0252AE05F31004FB6CF /* StarshipProvider.swift */,
 				E87AC0262AE05F31004FB6CF /* VehicleProvider.swift */,
+				E895FE412AE12907001E2304 /* CellProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -329,8 +335,8 @@
 		E87AC0352AE05F52004FB6CF /* Planets */ = {
 			isa = PBXGroup;
 			children = (
-				E87AC0372AE05F52004FB6CF /* PlanetListViewController.xib */,
 				E87AC0382AE05F52004FB6CF /* PlanetListViewController.swift */,
+				E87AC0372AE05F52004FB6CF /* PlanetListViewController.xib */,
 				E87AC03A2AE05F52004FB6CF /* PlanetDetailsViewController.swift */,
 				E87AC0362AE05F52004FB6CF /* PlanetDetailsViewController.xib */,
 				E87AC0392AE05F52004FB6CF /* PlanetDetailType.swift */,
@@ -522,6 +528,7 @@
 				E87AC00F2AE05EFB004FB6CF /* Formatter.swift in Sources */,
 				E87AC0292AE05F31004FB6CF /* PlanetProvider.swift in Sources */,
 				E87AC06F2AE05F52004FB6CF /* VehicleListViewController.swift in Sources */,
+				E895FE442AE13176001E2304 /* CellType.swift in Sources */,
 				E87AC0642AE05F52004FB6CF /* SpeciesDetailViewController.swift in Sources */,
 				E87AC02C2AE05F31004FB6CF /* VehicleProvider.swift in Sources */,
 				E87AC0222AE05F22004FB6CF /* BaseModel.swift in Sources */,
@@ -542,6 +549,7 @@
 				E87AC0552AE05F52004FB6CF /* CharacterDetailType.swift in Sources */,
 				E87AC0052AE05EAE004FB6CF /* LinkTableViewCell.swift in Sources */,
 				E85CADDC2AE058ED00E85763 /* AppDelegate.swift in Sources */,
+				E895FE422AE12907001E2304 /* CellProvider.swift in Sources */,
 				E87AC06C2AE05F52004FB6CF /* VehicleDetailType.swift in Sources */,
 				E87AC00E2AE05EFB004FB6CF /* UITableViewCell.swift in Sources */,
 				E87AC0082AE05EAE004FB6CF /* StringValueTableViewCell.swift in Sources */,

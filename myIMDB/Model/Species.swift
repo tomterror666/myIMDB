@@ -10,25 +10,25 @@ import UIKit
 class Species: BaseModel {
     static let numberOfDetails = 14
     
-    var name: String  { jsonDict["name"] as! String }
+    @objc var name: String  { jsonDict["name"] as! String }
     
-    var classification: String { jsonDict["classification"] as! String }
+    @objc var classification: String { jsonDict["classification"] as! String }
     
-    var designation: String { jsonDict["designation"] as! String }
+    @objc var designation: String { jsonDict["designation"] as! String }
     
-    var averageHeight: Int { Int(jsonDict["average_height"] as! String) ?? 0 }
+    @objc var averageHeight: Int { Int(jsonDict["average_height"] as! String) ?? 0 }
     
-    var skinColors: String { jsonDict["skin_colors"] as! String }
+    @objc var skinColors: String { jsonDict["skin_colors"] as! String }
     
-    var hairColors: String { jsonDict["hair_colors"] as! String }
+    @objc var hairColors: String { jsonDict["hair_colors"] as! String }
     
-    var eyeColors: String { jsonDict["eye_colors"] as! String }
+    @objc var eyeColors: String { jsonDict["eye_colors"] as! String }
     
-    var averageLifespan: Int { Int(jsonDict["average_lifespan"] as! String) ?? 0 }
+    @objc var averageLifespan: Int { Int(jsonDict["average_lifespan"] as! String) ?? 0 }
     
-    var language: String { jsonDict["language"] as! String }
+    @objc var language: String { jsonDict["language"] as! String }
     
-    var homeworld: [String] {
+    @objc var homeworld: [String] {
         get {
             let homeworlds = jsonDict["homeworld"] as! [String]
             var homeworldsIds: [String] = []
@@ -42,7 +42,7 @@ class Species: BaseModel {
         }
     }
     
-    var people: [String] {
+    @objc var people: [String] {
         get {
             let peoples = jsonDict["people"] as! [String]
             var peoplesIds: [String] = []
@@ -56,7 +56,7 @@ class Species: BaseModel {
         }
     }
     
-    var films: [String] {
+    @objc var films: [String] {
         get {
             let films = jsonDict["films"] as! [String]
             var filmsIds: [String] = []
@@ -70,9 +70,9 @@ class Species: BaseModel {
         }
     }
     
-    var createdAt: String { jsonDict["created"] as! String }
+    @objc var createdAt: String { jsonDict["created"] as! String }
     
-    var editedAt: String { jsonDict["edited"] as! String }
+    @objc var editedAt: String { jsonDict["edited"] as! String }
     
-    var url: String { jsonDict["name"] as! String }
+    @objc var url: String { jsonDict["name"] as! String }
 }

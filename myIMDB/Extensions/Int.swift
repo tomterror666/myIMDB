@@ -8,7 +8,7 @@
 import Foundation
 
 extension Int {
-    var formattedWithSeparator: String {
+    var withSeparator: String {
         return Formatter.withSeparator.string(for: self) ?? ""
     }
 }

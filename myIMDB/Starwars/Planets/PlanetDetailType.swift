@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PlanetDetailType: Int {
+/*enum PlanetDetailType: Int {
     case unknown = -1
     case rotation_period = 0
     case orbital_period = 1
@@ -27,4 +27,19 @@ enum PlanetDetailType: Int {
 class PlanetDetailCellType: NSObject {
     var type: PlanetDetailType = .unknown
     var cellClassName: String = ""
-}
+}*/
+
+let PlanetDetailType = [
+    CellType(stringLiteral: "3,rotationPeriod,Rotation Period:,,hours"),
+    CellType(stringLiteral: "3,orbitalPeriod,Orbital Period:,,days"),
+    CellType(stringLiteral: "3,diameter,Diameter:,,km"),
+    CellType(stringLiteral: "2,climate,Climate:"),
+    CellType(stringLiteral: "2,gravity,Gravity:"),
+    CellType(stringLiteral: "2,terrain,Terrain:"),
+    CellType(stringLiteral: "4,hasSurfaceWater,Water Coverage:,,%"),
+    CellType(stringLiteral: "3,population,Population:"),
+    CellType(stringLiteral: "2,createdAt,Created at:"),
+    CellType(stringLiteral: "2,editedAt,Edited at:"),
+    CellType(stringLiteral: "0,residents,Residents,CharacterListViewController"),
+    CellType(stringLiteral: "0,films,Films,FilmListViewController"),
+];

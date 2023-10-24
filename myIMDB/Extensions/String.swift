@@ -22,4 +22,12 @@ extension String {
 
         return ceil(boundingBox.width)
     }
+    
+    func startsWithUppercase() -> String {
+        if let first = self.first {
+            return first.uppercased() + self.dropFirst()
+        } else {
+            return ""
+        }
+    }
 }

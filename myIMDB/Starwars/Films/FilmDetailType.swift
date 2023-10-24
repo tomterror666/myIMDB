@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FilmDetailType: Int {
+/*enum FilmDetailType: Int {
     case unknown = -1
     case openingCrawl = 0
     case characters = 1
@@ -26,4 +26,18 @@ enum FilmDetailType: Int {
 class FilmDetailCellType: NSObject {
     var type: FilmDetailType = .unknown
     var cellClassName: String = ""
-}
+}*/
+
+let FilmDetailType: Array<CellType> = [
+    CellType(stringLiteral: "1,openingCrawl,"),
+    CellType(stringLiteral: "0,characters,Characters,CharacterListViewController"),
+    CellType(stringLiteral: "0,planets,Planets,PlanetListViewController"),
+    CellType(stringLiteral: "0,species,Species,SpeciesListViewController"),
+    CellType(stringLiteral: "0,starships,Starships,StarshipListViewController"),
+    CellType(stringLiteral: "0,vehicles,Vehicles,VehicleListViewController"),
+    CellType(stringLiteral: "2,director,Director:"),
+    CellType(stringLiteral: "2,producers,Producers:"),
+    CellType(stringLiteral: "2,releaseDate,Release Date:"),
+    CellType(stringLiteral: "2,createdAt,Created at:"),
+    CellType(stringLiteral: "2,editedAt,Edited at:")
+]

@@ -10,7 +10,7 @@ import UIKit
 class Film: BaseModel {
     static let numberOfDetails = 12
     
-    var characters: [String]
+    @objc var characters: [String]
     {
         get {
             let characters = (jsonDict["characters"] ?? []) as! [String]
@@ -24,37 +24,43 @@ class Film: BaseModel {
             return charactersIds
         }
     }
-    var createdAt: String
+    
+    @objc var createdAt: String
     {
         get {
             return (jsonDict["created"] ?? "") as! String
         }
     }
-    var director: String
+    
+    @objc var director: String
     {
         get {
             return (jsonDict["director"] ?? "") as! String
         }
     }
-    var editedAt: String
+    
+    @objc var editedAt: String
     {
         get {
             return (jsonDict["edited"] ?? "") as! String
         }
     }
-    var episodeId: Int
+    
+    @objc var episodeId: Int
     {
         get {
             return (jsonDict["episodeId"] ?? 0) as! Int
         }
     }
-    var openingCrawl: String
+    
+    @objc var openingCrawl: String
     {
         get {
             return (jsonDict["opening_crawl"] ?? "") as! String
         }
     }
-    var planets: [String]
+    
+    @objc var planets: [String]
     {
         get {
             let planets = (jsonDict["planets"] ?? []) as! [String]
@@ -68,19 +74,22 @@ class Film: BaseModel {
             return planetsIds
         }
     }
-    var producers: String
+    
+    @objc var producers: String
     {
         get {
             return (jsonDict["producer"] ?? "") as! String
         }
     }
-    var releaseDate: String
+    
+    @objc var releaseDate: String
     {
         get {
             return (jsonDict["release_date"] ?? "") as! String
         }
     }
-    var species: [String]
+    
+    @objc var species: [String]
     {
         get {
             let allSpecies = (jsonDict["species"] ?? []) as! [String]
@@ -94,7 +103,8 @@ class Film: BaseModel {
             return speciesIds
         }
     }
-    var starships: [String]
+    
+    @objc var starships: [String]
     {
         get {
             let starships = (jsonDict["starships"] ?? []) as! [String]
@@ -108,19 +118,22 @@ class Film: BaseModel {
             return starshipsIds
         }
     }
-    var title: String
+    
+    @objc var title: String
     {
         get {
             return (jsonDict["title"] ?? "") as! String
         }
     }
-    var url: URL
+    
+    @objc var url: URL
     {
         get {
             return URL(string: (jsonDict["url"] ?? "") as! String ) ?? URL(string: "https://www.google.de")!
         }
     }
-    var vehicles: [String]
+    
+    @objc var vehicles: [String]
     {
         get {
             let vehicles = (jsonDict["vehicles"] ?? []) as! [String]

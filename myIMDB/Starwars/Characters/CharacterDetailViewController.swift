@@ -18,6 +18,8 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
             self.characterDetailTableView?.reloadData()
         }
     }
+    
+    var cellProvider: CellProvider?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,10 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
         
         title = character?.name
+        
+        if cellProvider == nil, let characterDetailTableView {
+            cellProvider = CellProvider(tableView: characterDetailTableView, owner: self)
+        }
     }
     
     
@@ -39,43 +45,11 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let character else {
+        guard let character, let cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
-        let type = CharacterDetailType(rawValue: indexPath.row)
         
-        switch type {
-        case .height:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Height:", value: character.height)
-        case .mass:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Weight:", value: character.mass)
-        case .hairColor:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Hair color:", value: character.hairColor)
-        case .skinColor:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Skin color:", value: character.skinColor)
-        case .eyeColor:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Eye color:", value: character.eyeColor)
-        case .birthYear:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Birth year:", value: character.birthYear)
-        case .createdAt:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Created at:", value: character.createdAt)
-        case .editedAt:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Edited at:", value: character.editedAt)
-        case .gender:
-            return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: self, with: "Gender:", value: character.gender)
-        case .homeWorld:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: "Homeworld")
-        case .films:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: "Films")
-        case .species:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: "Species")
-        case .vehicles:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: "Vehicles")
-        case .starships:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: "Starships")
-        default:
-            return UITableViewCell(style: .default, reuseIdentifier: "")
-        }
+        return cellProvider.cell(forModel: character, atLine: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -89,54 +63,9 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let character else { return }
+        guard let character, let cellProvider, let vc = cellProvider.vcToOpen(forModel: character, atLine: indexPath.row) else { return }
         
-        let type = CharacterDetailType(rawValue: indexPath.row)
-        var vc: UIViewController?
-        
-        switch type {
-        case .homeWorld:
-            if character.homeworld.count == 0 {
-                Info.show(message: "Homeworld list is empty!", of: .info, in: view.bounds.size.width / 2, connect: tableView.cellForRow(at: indexPath)!)
-                break
-            }
-            vc = PlanetListViewController(nibName: "PlanetListViewController", bundle: nil)
-            (vc as! PlanetListViewController).planets = [character.homeworld]
-        case .films:
-            if character.films.count == 0 {
-                Info.show(message: "Film list is empty!", of: .info, in: view.bounds.size.width / 2, connect: tableView.cellForRow(at: indexPath)!)
-                break
-            }
-            vc = FilmListViewController(nibName: "FilmListViewController", bundle: nil)
-            (vc as! FilmListViewController).films = character.films
-        case .species:
-            if character.species.count == 0 {
-                Info.show(message: "Species list is empty!", of: .info, in: view.bounds.size.width / 2, connect: tableView.cellForRow(at: indexPath)!)
-                break
-            }
-            vc = SpeciesListViewController(nibName: "SpeciesListViewController", bundle: nil)
-            (vc as! SpeciesListViewController).allSpecies = character.species
-        case .vehicles:
-            if character.vehicles.count == 0 {
-                Info.show(message: "Vehicle list is empty!", of: .info, in: view.bounds.size.width / 2, connect: tableView.cellForRow(at: indexPath)!)
-                break
-            }
-            vc = VehicleListViewController(nibName: "VehicleListViewController", bundle: nil)
-            (vc as! VehicleListViewController).vehicles = character.vehicles
-        case .starships:
-            if character.starships.count == 0 {
-                Info.show(message: "Starship list is empty!", of: .info, in: view.bounds.size.width / 2, connect: tableView.cellForRow(at: indexPath)!)
-                break
-            }
-            vc = StarshipListViewController(nibName: "StarshipListViewController", bundle: nil)
-            (vc as! StarshipListViewController).starships = character.starships
-        default:
-            break
-        }
-        
-        if let vc {
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
