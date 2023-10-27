@@ -18,7 +18,7 @@ let SpeciesDetailType = [
     CellType(type: .stringValue, propertyName: "language", propertyLabel: "Language:"),
     CellType(type: .stringValue, propertyName: "createdAt", propertyLabel: "Created at:"),
     CellType(type: .stringValue, propertyName: "editedAt", propertyLabel: "Edited at:"),
-    CellType(type: .link, propertyName: "homeworld", propertyLabel: "Homeworld", vcClassName: "PlantListViewController"),
+    CellType(type: .link, propertyName: "homeworld", propertyLabel: "Homeworld", vcClassName: "PlanetListViewController"),
     CellType(type: .link, propertyName: "people", propertyLabel: "People", vcClassName: "CharacterListViewController"),
     CellType(type: .link, propertyName: "films", propertyLabel: "Films", vcClassName: "FilmListViewController")
 ]

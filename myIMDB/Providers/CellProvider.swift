@@ -30,22 +30,30 @@ class CellProvider: NSObject {
                 if let ext = cellType.unitExtension {
                     value = value + " \(ext)"
                 }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: value)
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: value.count > 0 ? value : "unknown")
             }
         case .intValue:
             if let value = model.value(forKey: cellType.propertyName) as? Int {
                 var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
+                
+                if value == 0 {
+                    valueStr = "unknown"
+                } else if let ext = cellType.unitExtension {
                     valueStr = valueStr + " \(ext)"
                 }
+                
                 return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
             }
         case .floatValue:
             if let value = model.value(forKey: cellType.propertyName) as? Float {
                 var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
+                
+                if value == 0 {
+                    valueStr = "unknown"
+                } else if let ext = cellType.unitExtension {
                     valueStr = valueStr + " \(ext)"
                 }
+                
                 return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
             }
         case .link:
