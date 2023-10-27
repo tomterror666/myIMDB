@@ -30,7 +30,7 @@ class CellProvider: NSObject {
                 if let ext = cellType.unitExtension {
                     value = value + " \(ext)"
                 }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: value)
             }
         case .intValue:
             if let value = model.value(forKey: cellType.propertyName) as? Int {
@@ -38,7 +38,7 @@ class CellProvider: NSObject {
                 if let ext = cellType.unitExtension {
                     valueStr = valueStr + " \(ext)"
                 }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
             }
         case .floatValue:
             if let value = model.value(forKey: cellType.propertyName) as? Float {
@@ -46,10 +46,10 @@ class CellProvider: NSObject {
                 if let ext = cellType.unitExtension {
                     valueStr = valueStr + " \(ext)"
                 }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
             }
         case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
+            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel)
         case .longText:
             return LongTextTableViewCell.configuredLongTextCell(for: tableView, owner: owner, with: model.value(forKey: cellType.propertyName) as! String)
         default:

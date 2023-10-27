@@ -7,41 +7,18 @@
 
 import Foundation
 
-/*enum SpeciesDetailType: Int {
-    case unknown = -1
-    case classification = 0
-    case designation = 1
-    case averageHeight = 2
-    case skinColors = 3
-    case hairColors = 4
-    case eyeColors = 5
-    case averageLifespan = 6
-    case language = 7
-    case created = 8
-    case edited = 9
-    case homeworld = 10
-    case people = 11
-    case films = 12
-    case name = 13
-}
-
-class SpeciesDetailCellType: NSObject {
-    var type: SpeciesDetailType = .unknown
-    var cellClassName: String = ""
-}*/
-
 let SpeciesDetailType = [
-    CellType(stringLiteral: "2,classification,Classification:"),
-    CellType(stringLiteral: "2,designation,Designation:"),
-    CellType(stringLiteral: "3,averageHeight,Avg. Height:,,cm"),
-    CellType(stringLiteral: "2,skinColors,Skin Colors:"),
-    CellType(stringLiteral: "2,hairColors,Hair Colors:"),
-    CellType(stringLiteral: "2,eyeColors,Eye colors:"),
-    CellType(stringLiteral: "3,averageLifespan,Avg. Lifespan:,,years"),
-    CellType(stringLiteral: "2,language,Language:"),
-    CellType(stringLiteral: "2,createdAt,Created at:"),
-    CellType(stringLiteral: "2,editedAt,Edited at:"),
-    CellType(stringLiteral: "0,homeworld,Homeworld,PlanetListViewController"),
-    CellType(stringLiteral: "0,people,People,CharacterListViewController"),
-    CellType(stringLiteral: "0,films,Films,FilmListViewController"),
+    CellType(type: .stringValue, propertyName: "classification", propertyLabel: "Classification"),
+    CellType(type: .stringValue, propertyName: "designation", propertyLabel: "Designation:"),
+    CellType(type: .intValue, propertyName: "averageHeight", propertyLabel: "Avg. Height:", unitExtension: "cm"),
+    CellType(type: .stringValue, propertyName: "skinColors", propertyLabel: "Skin colors:"),
+    CellType(type: .stringValue, propertyName: "hairColors", propertyLabel: "Hair colors:"),
+    CellType(type: .stringValue, propertyName: "eyeColors", propertyLabel: "Eye colors:"),
+    CellType(type: .intValue, propertyName: "averageLifespan", propertyLabel: "Avg. Lifespan:", unitExtension: "years"),
+    CellType(type: .stringValue, propertyName: "language", propertyLabel: "Language:"),
+    CellType(type: .stringValue, propertyName: "createdAt", propertyLabel: "Created at:"),
+    CellType(type: .stringValue, propertyName: "editedAt", propertyLabel: "Edited at:"),
+    CellType(type: .link, propertyName: "homeworld", propertyLabel: "Homeworld", vcClassName: "PlantListViewController"),
+    CellType(type: .link, propertyName: "people", propertyLabel: "People", vcClassName: "CharacterListViewController"),
+    CellType(type: .link, propertyName: "films", propertyLabel: "Films", vcClassName: "FilmListViewController")
 ]

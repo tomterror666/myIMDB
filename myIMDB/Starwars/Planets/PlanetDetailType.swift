@@ -7,39 +7,17 @@
 
 import Foundation
 
-/*enum PlanetDetailType: Int {
-    case unknown = -1
-    case rotation_period = 0
-    case orbital_period = 1
-    case diameter = 2
-    case climate = 3
-    case gravity = 4
-    case terrain = 5
-    case surface_water = 6
-    case population = 7
-    case created = 8
-    case edited = 9
-    case residents = 10
-    case films = 11
-    case name = 12
-}
-
-class PlanetDetailCellType: NSObject {
-    var type: PlanetDetailType = .unknown
-    var cellClassName: String = ""
-}*/
-
 let PlanetDetailType = [
-    CellType(stringLiteral: "3,rotationPeriod,Rotation Period:,,hours"),
-    CellType(stringLiteral: "3,orbitalPeriod,Orbital Period:,,days"),
-    CellType(stringLiteral: "3,diameter,Diameter:,,km"),
-    CellType(stringLiteral: "2,climate,Climate:"),
-    CellType(stringLiteral: "2,gravity,Gravity:"),
-    CellType(stringLiteral: "2,terrain,Terrain:"),
-    CellType(stringLiteral: "4,hasSurfaceWater,Water Coverage:,,%"),
-    CellType(stringLiteral: "3,population,Population:"),
-    CellType(stringLiteral: "2,createdAt,Created at:"),
-    CellType(stringLiteral: "2,editedAt,Edited at:"),
-    CellType(stringLiteral: "0,residents,Residents,CharacterListViewController"),
-    CellType(stringLiteral: "0,films,Films,FilmListViewController"),
+    CellType(type: .intValue, propertyName: "rotationPeriod", propertyLabel: "Rotation Period:", unitExtension: "hours"),
+    CellType(type: .intValue, propertyName: "orbitalPeriod", propertyLabel: "Orbital Period:", unitExtension: "days"),
+    CellType(type: .intValue, propertyName: "diameter", propertyLabel: "Diameter:", unitExtension: "km"),
+    CellType(type: .stringValue, propertyName: "climate", propertyLabel: "Climate:"),
+    CellType(type: .stringValue, propertyName: "gravity", propertyLabel: "Gravity:"),
+    CellType(type: .stringValue, propertyName: "terrain", propertyLabel: "Terrain:"),
+    CellType(type: .floatValue, propertyName: "hasSurfaceWater", propertyLabel: "Water Coverage:", unitExtension: "%"),
+    CellType(type: .intValue, propertyName: "population", propertyLabel: "Population:"),
+    CellType(type: .stringValue, propertyName: "createdAt", propertyLabel: "Created at:"),
+    CellType(type: .stringValue, propertyName: "editedAt", propertyLabel: "Edited at:"),
+    CellType(type: .link, propertyName: "residents", propertyLabel: "Residents", vcClassName: "CharacterListViewController"),
+    CellType(type: .link, propertyName: "films", propertyLabel: "Films", vcClassName: "FilmListViewController")
 ];

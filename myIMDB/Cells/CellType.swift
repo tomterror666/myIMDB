@@ -16,41 +16,24 @@ enum _cellType: Int {
     case floatValue = 4
 }
 
-class CellType: Equatable, ExpressibleByStringLiteral {
+class CellType: NSObject {
     
     var type: _cellType = .unknown
     
-    var propertyName: String = ""
+    var propertyName: String
     
-    var propertyLabel: String?
+    var propertyLabel: String
     
     var vcClassName: String?
     
     var unitExtension: String?
     
-    required init(stringLiteral value: StringLiteralType) {
-        let components = value.components(separatedBy: ",")
-        
-        if components.count >= 3 {
-            self.type = _cellType(rawValue: Int(components[0])!)!
-            self.propertyName = components[1]
-            self.propertyLabel = components[2]
-        }
-        if components.count >= 4 {
-            self.vcClassName = components[3]
-        }
-        if components.count == 5 {
-            self.unitExtension = components[4]
-        }
+    init(type: _cellType, propertyName: String, propertyLabel: String, vcClassName: String? = nil, unitExtension: String? = nil) {
+        self.type = type
+        self.propertyName = propertyName
+        self.propertyLabel = propertyLabel
+        self.vcClassName = vcClassName
+        self.unitExtension = unitExtension
     }
-    
-    static func == (lhs: CellType, rhs: CellType) -> Bool {
-        return lhs.type == rhs.type
-    }
-    
     
 }
-
-/*enum CellType: CellTypeDetail {
-    
-}*/
