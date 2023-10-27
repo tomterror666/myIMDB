@@ -10,35 +10,35 @@ import UIKit
 class Starship: BaseModel {
     static let numberOfDetails = 17
     
-    @objc var name: String { jsonDict["name"] as! String }
+    @objc var name: String { jsonDict["name"] as? String ?? "" }
     
-    @objc var model: String { jsonDict["model"] as! String }
+    @objc var model: String { jsonDict["model"] as? String ?? "" }
     
-    @objc var manufacturer: String { jsonDict["manufacturer"] as! String }
+    @objc var manufacturer: String { jsonDict["manufacturer"] as? String ?? "" }
     
-    @objc var costInCredits: Int { Int(jsonDict["cost_in_credits"] as! String) ?? 0 }
+    @objc var costInCredits: Int { Int(jsonDict["cost_in_credits"] as? String ?? "") ?? 0 }
     
-    @objc var length: Float { Float(jsonDict["length"] as! String) ?? 0.0 }
+    @objc var length: Float { Float(jsonDict["length"] as? String ?? "") ?? 0.0 }
     
-    @objc var maxAtmospheringSpeed: String { jsonDict["max_atmosphering_speed"] as! String }
+    @objc var maxAtmospheringSpeed: String { jsonDict["max_atmosphering_speed"] as? String ?? "" }
     
-    @objc var crew: Int { Int(jsonDict["crew"] as! String) ?? 0 }
+    @objc var crew: Int { Int(jsonDict["crew"] as? String ?? "") ?? 0 }
     
-    @objc var passengers: Int { Int(jsonDict["passengers"] as! String) ?? 0 }
+    @objc var passengers: Int { Int(jsonDict["passengers"] as? String ?? "") ?? 0 }
     
-    @objc var cargoCapacity: Int { Int(jsonDict["cargo_capacity"] as! String) ?? 0 }
+    @objc var cargoCapacity: Int { Int(jsonDict["cargo_capacity"] as? String ?? "") ?? 0 }
     
-    @objc var consumables: String { jsonDict["consumables"] as! String }
+    @objc var consumables: String { jsonDict["consumables"] as? String ?? "" }
     
-    @objc var hyperdriveRating: Float { Float(jsonDict["hyperdrive_rating"] as! String) ?? 0.0 }
+    @objc var hyperdriveRating: Float { Float(jsonDict["hyperdrive_rating"] as? String ?? "") ?? 0.0 }
     
-    @objc var MGLT: Int { Int(jsonDict["MGLT"] as! String) ?? 0 }
+    @objc var MGLT: Int { Int(jsonDict["MGLT"] as? String ?? "") ?? 0 }
     
-    @objc var starshipClass: String { jsonDict["starship_class"] as! String }
+    @objc var starshipClass: String { jsonDict["starship_class"] as? String ?? "" }
     
     @objc var pilots: [String] {
         get {
-            let pilots = jsonDict["pilots"] as! [String]
+            let pilots = jsonDict["pilots"] as? [String] ?? [String]()
             var pilotsIds: [String] = []
             pilots.forEach { pilot in
                 let components = pilot.components(separatedBy: "/")
@@ -52,7 +52,7 @@ class Starship: BaseModel {
     
     @objc var films: [String] {
         get {
-            let films = jsonDict["films"] as! [String]
+            let films = jsonDict["films"] as? [String] ?? [String]()
             var filmsIds: [String] = []
             films.forEach { film in
                 let components = film.components(separatedBy: "/")
@@ -64,9 +64,9 @@ class Starship: BaseModel {
         }
     }
  
-    @objc var createdAt: String { jsonDict["created"] as! String }
+    @objc var createdAt: String { jsonDict["created"] as? String ?? "" }
     
-    @objc var editedAt: String { jsonDict["edited"] as! String }
+    @objc var editedAt: String { jsonDict["edited"] as? String ?? "" }
     
-    @objc var url: String { jsonDict["url"] as! String }
+    @objc var url: String { jsonDict["url"] as? String ?? "" }
 }

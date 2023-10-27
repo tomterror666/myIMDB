@@ -24,7 +24,7 @@ class SpeciesDetailViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         if cellProvider == nil, let speciesDetailsTableView {
-            cellProvider = CellProvider(tableView: speciesDetailsTableView, owner: self)
+            cellProvider = CellProvider(tableView: speciesDetailsTableView, owner: self, cellType: SpeciesDetailType)
         }
     }
 

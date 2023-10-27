@@ -33,7 +33,7 @@ class PlanetDetailsViewController: UIViewController, UITableViewDataSource, UITa
         title = planet?.name
         
         if cellProvider == nil, let planetDetailsTableView {
-            cellProvider = CellProvider(tableView: planetDetailsTableView, owner: self)
+            cellProvider = CellProvider(tableView: planetDetailsTableView, owner: self, cellType: PlanetDetailType)
         }
     }
     

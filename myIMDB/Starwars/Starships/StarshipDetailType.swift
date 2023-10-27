@@ -30,7 +30,7 @@ import Foundation
 
 let StarshipDetailType = [
     CellType(stringLiteral: "2,model,Model:"),
-    CellType(stringLiteral: "2,manufacturer;Manufacturer:"),
+    CellType(stringLiteral: "2,manufacturer,Manufacturer:"),
     CellType(stringLiteral: "3,costInCredits,Costs in Credits:"),
     CellType(stringLiteral: "4,length,Length:,,m"),
     CellType(stringLiteral: "2,maxAtmospheringSpeed,max atmos. Speed:,,m/s"),

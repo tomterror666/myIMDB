@@ -13,30 +13,47 @@ class CellProvider: NSObject {
     
     var owner: UIViewController
     
-    init(tableView: UITableView, owner: UIViewController) {
+    var cellTypeArray: [CellType]
+    
+    init(tableView: UITableView, owner: UIViewController, cellType: [CellType]) {
         self.tableView = tableView
         self.owner = owner
+        self.cellTypeArray = cellType
     }
 
     func cell(forModel model: NSObject, atLine line: Int) -> UITableViewCell {
+        let cellType = cellTypeArray[line]
         
-        if model is Character {
-            return characterCell(forCharacter: model as! Character, atLine: line)
-        }
-        if model is Film {
-            return filmCell(forFilm: model as! Film, atLine: line)
-        }
-        if model is Planet {
-            return planetCell(forPlanet: model as! Planet, atLine: line)
-        }
-        if model is Species {
-            return speciesCell(forSpecies: model as! Species, atLine: line)
-        }
-        if model is Starship {
-            return starshipCell(forStarship: model as! Starship, atLine: line)
-        }
-        if model is Vehicle {
-            return vehicleCell(forVehicle: model as! Vehicle, atLine: line)
+        switch cellType.type {
+        case .stringValue:
+            if var value = model.value(forKey: cellType.propertyName) as? String {
+                if let ext = cellType.unitExtension {
+                    value = value + " \(ext)"
+                }
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
+            }
+        case .intValue:
+            if let value = model.value(forKey: cellType.propertyName) as? Int {
+                var valueStr = "\(value.withSeparator)"
+                if let ext = cellType.unitExtension {
+                    valueStr = valueStr + " \(ext)"
+                }
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
+            }
+        case .floatValue:
+            if let value = model.value(forKey: cellType.propertyName) as? Float {
+                var valueStr = "\(value)"
+                if let ext = cellType.unitExtension {
+                    valueStr = valueStr + " \(ext)"
+                }
+                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
+            }
+        case .link:
+            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
+        case .longText:
+            return LongTextTableViewCell.configuredLongTextCell(for: tableView, owner: owner, with: model.value(forKey: cellType.propertyName) as! String)
+        default:
+            break
         }
         
         return UITableViewCell(style: .default, reuseIdentifier: "")
@@ -64,228 +81,7 @@ class CellProvider: NSObject {
         
         return nil
     }
-    
-    
-    // MARK: - private functions for cells
- 
-    private func characterCell(forCharacter character: Character, atLine line: Int) -> UITableViewCell {
-        let cellType = CharacterDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = character.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = character.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = character.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
-    private func filmCell(forFilm film: Film, atLine line: Int) -> UITableViewCell {
-        let cellType = FilmDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = film.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = film.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = film.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        case .longText:
-            return LongTextTableViewCell.configuredLongTextCell(for: tableView, owner: owner, with: film.value(forKey: cellType.propertyName) as! String)
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
-    private func planetCell(forPlanet planet: Planet, atLine line: Int) -> UITableViewCell {
-        let cellType = PlanetDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = planet.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = planet.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = planet.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
-    private func speciesCell(forSpecies species: Species, atLine line: Int) -> UITableViewCell {
-        let cellType = SpeciesDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = species.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = species.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = species.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
-    private func starshipCell(forStarship starship: Starship, atLine line: Int) -> UITableViewCell {
-        let cellType = StarshipDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = starship.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = starship.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = starship.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
-    private func vehicleCell(forVehicle vehicle: Vehicle, atLine line: Int) -> UITableViewCell {
-        let cellType = VehicleDetailType[line]
-        
-        switch cellType.type {
-        case .stringValue:
-            if var value = vehicle.value(forKey: cellType.propertyName) as? String {
-                if let ext = cellType.unitExtension {
-                    value = value + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: value)
-            }
-        case .intValue:
-            if let value = vehicle.value(forKey: cellType.propertyName) as? Int {
-                var valueStr = "\(value.withSeparator)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .floatValue:
-            if let value = vehicle.value(forKey: cellType.propertyName) as? Float {
-                var valueStr = "\(value)"
-                if let ext = cellType.unitExtension {
-                    valueStr = valueStr + " \(ext)"
-                }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase()+":", value: valueStr)
-            }
-        case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel != nil ? cellType.propertyLabel! : cellType.propertyName.startsWithUppercase())
-        default:
-            break
-        }
-        
-        return UITableViewCell(style: .default, reuseIdentifier: "")
-    }
-    
+
     // MARK: - private functions for vc to open
     
     private func characterVCToOpen(forModel model: NSObject, atLine line: Int) -> UIViewController? {
@@ -294,7 +90,7 @@ class CellProvider: NSObject {
         
         if cellType.type == .link, let className = cellType.vcClassName {
             if className == "PlanetListViewController" {
-                return planetListVC(forPlanets: [character.homeworld], atLine: line)
+                return planetListVC(forPlanets: character.homeworld, atLine: line)
             }
             if className == "FilmListViewController" {
                 return filmListVC(forFilms: character.films, atLine: line)

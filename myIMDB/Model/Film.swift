@@ -13,7 +13,7 @@ class Film: BaseModel {
     @objc var characters: [String]
     {
         get {
-            let characters = (jsonDict["characters"] ?? []) as! [String]
+            let characters = jsonDict["characters"] as? [String] ?? [String]()
             var charactersIds: [String] = []
             characters.forEach { character in
                 let components = character.components(separatedBy: "/")
@@ -25,45 +25,20 @@ class Film: BaseModel {
         }
     }
     
-    @objc var createdAt: String
-    {
-        get {
-            return (jsonDict["created"] ?? "") as! String
-        }
-    }
+    @objc var createdAt: String { jsonDict["created"] as? String ?? "" }
     
-    @objc var director: String
-    {
-        get {
-            return (jsonDict["director"] ?? "") as! String
-        }
-    }
+    @objc var director: String { return jsonDict["director"] as? String ?? "" }
     
-    @objc var editedAt: String
-    {
-        get {
-            return (jsonDict["edited"] ?? "") as! String
-        }
-    }
+    @objc var editedAt: String { return jsonDict["edited"] as? String ?? "" }
     
-    @objc var episodeId: Int
-    {
-        get {
-            return (jsonDict["episodeId"] ?? 0) as! Int
-        }
-    }
+    @objc var episodeId: Int { return Int(jsonDict["episodeId"] as? String ?? "") ?? 0 }
     
-    @objc var openingCrawl: String
-    {
-        get {
-            return (jsonDict["opening_crawl"] ?? "") as! String
-        }
-    }
+    @objc var openingCrawl: String { return jsonDict["opening_crawl"] as? String ?? "" }
     
     @objc var planets: [String]
     {
         get {
-            let planets = (jsonDict["planets"] ?? []) as! [String]
+            let planets = jsonDict["planets"] as? [String] ?? [String]()
             var planetsIds: [String] = []
             planets.forEach { planet in
                 let components = planet.components(separatedBy: "/")
@@ -75,24 +50,14 @@ class Film: BaseModel {
         }
     }
     
-    @objc var producers: String
-    {
-        get {
-            return (jsonDict["producer"] ?? "") as! String
-        }
-    }
+    @objc var producers: String { return jsonDict["producer"] as? String ?? "" }
     
-    @objc var releaseDate: String
-    {
-        get {
-            return (jsonDict["release_date"] ?? "") as! String
-        }
-    }
+    @objc var releaseDate: String { return jsonDict["release_date"] as? String ?? "" }
     
     @objc var species: [String]
     {
         get {
-            let allSpecies = (jsonDict["species"] ?? []) as! [String]
+            let allSpecies = jsonDict["species"] as? [String] ?? [String]()
             var speciesIds: [String] = []
             allSpecies.forEach { species in
                 let components = species.components(separatedBy: "/")
@@ -107,7 +72,7 @@ class Film: BaseModel {
     @objc var starships: [String]
     {
         get {
-            let starships = (jsonDict["starships"] ?? []) as! [String]
+            let starships = jsonDict["starships"] as? [String] ?? [String]()
             var starshipsIds: [String] = []
             starships.forEach { starship in
                 let components = starship.components(separatedBy: "/")
@@ -119,24 +84,14 @@ class Film: BaseModel {
         }
     }
     
-    @objc var title: String
-    {
-        get {
-            return (jsonDict["title"] ?? "") as! String
-        }
-    }
+    @objc var title: String { return jsonDict["title"] as? String ?? "" }
     
-    @objc var url: URL
-    {
-        get {
-            return URL(string: (jsonDict["url"] ?? "") as! String ) ?? URL(string: "https://www.google.de")!
-        }
-    }
+    @objc var url: String { return jsonDict["url"] as? String ?? "" }
     
     @objc var vehicles: [String]
     {
         get {
-            let vehicles = (jsonDict["vehicles"] ?? []) as! [String]
+            let vehicles = jsonDict["vehicles"] as? [String] ?? [String]()
             var vehiclesIds: [String] = []
             vehicles.forEach { vehicle in
                 let components = vehicle.components(separatedBy: "/")

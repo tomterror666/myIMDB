@@ -35,7 +35,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
         title = character?.name
         
         if cellProvider == nil, let characterDetailTableView {
-            cellProvider = CellProvider(tableView: characterDetailTableView, owner: self)
+            cellProvider = CellProvider(tableView: characterDetailTableView, owner: self, cellType: CharacterDetailType)
         }
     }
     

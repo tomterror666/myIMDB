@@ -24,7 +24,7 @@ class StarshipDetailViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         if cellProvider == nil, let starshipDetailTableView {
-            cellProvider = CellProvider(tableView: starshipDetailTableView, owner: self)
+            cellProvider = CellProvider(tableView: starshipDetailTableView, owner: self, cellType: StarshipDetailType)
         }
     }
 

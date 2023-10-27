@@ -35,7 +35,7 @@ class FilmDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         title = film?.title
         
         if cellProvider == nil, let filmDetailsTableView {
-            cellProvider = CellProvider(tableView: filmDetailsTableView, owner: self)
+            cellProvider = CellProvider(tableView: filmDetailsTableView, owner: self, cellType: FilmDetailType)
         }
     }
 

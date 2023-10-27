@@ -24,7 +24,7 @@ class VehicleDetailViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         if cellProvider == nil, let vehicleDetailTableView {
-            cellProvider = CellProvider(tableView: vehicleDetailTableView, owner: self)
+            cellProvider = CellProvider(tableView: vehicleDetailTableView, owner: self, cellType: VehicleDetailType)
         }
     }
 
