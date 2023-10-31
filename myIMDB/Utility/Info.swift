@@ -44,10 +44,14 @@ class Info: NSObject {
         messageLabel.textColor = colors.textColor
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
+        messageLabel.accessibilityIdentifier = "InfoViewMessageLabel"
+        
+        bgView.accessibilityIdentifier = "InfoBackgoundView"
         bgView.addSubview(messageLabel)
         
         let popover = Popover(options: [.color(colors.backgroundColor)])
         
+        popover.accessibilityIdentifier = "InfoView"
         popover.show(bgView, fromView: to)
     }
 }

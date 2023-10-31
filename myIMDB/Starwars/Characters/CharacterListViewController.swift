@@ -38,6 +38,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         let character = characters[indexPath.row]
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: character)
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         cell.isLoading = true
         
         provider.fetchCharacter(withId: character) { fullCharacter, error in

@@ -30,7 +30,10 @@ class CellProvider: NSObject {
                 if let ext = cellType.unitExtension {
                     value = value + " \(ext)"
                 }
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: value.count > 0 ? value : "unknown")
+                let cell = StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: value.count > 0 ? value : "unknown")
+                cell.accessibilityIdentifier = "\(line)"
+                
+                return cell
             }
         case .intValue:
             if let value = model.value(forKey: cellType.propertyName) as? Int {
@@ -42,7 +45,10 @@ class CellProvider: NSObject {
                     valueStr = valueStr + " \(ext)"
                 }
                 
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
+                let cell = StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
+                cell.accessibilityIdentifier = "\(line)"
+                
+                return cell
             }
         case .floatValue:
             if let value = model.value(forKey: cellType.propertyName) as? Float {
@@ -54,12 +60,21 @@ class CellProvider: NSObject {
                     valueStr = valueStr + " \(ext)"
                 }
                 
-                return StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
+                let cell = StringValueTableViewCell.configuredStringValueCell(for: tableView, owner: owner, with: cellType.propertyLabel, value: valueStr)
+                cell.accessibilityIdentifier = "\(line)"
+                
+                return cell
             }
         case .link:
-            return LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel)
+            let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: owner, with: cellType.propertyLabel)
+            cell.accessibilityIdentifier = "\(line)"
+            
+            return cell
         case .longText:
-            return LongTextTableViewCell.configuredLongTextCell(for: tableView, owner: owner, with: model.value(forKey: cellType.propertyName) as! String)
+            let cell = LongTextTableViewCell.configuredLongTextCell(for: tableView, owner: owner, with: model.value(forKey: cellType.propertyName) as! String)
+            cell.accessibilityIdentifier = "\(line)"
+            
+            return cell
         default:
             break
         }

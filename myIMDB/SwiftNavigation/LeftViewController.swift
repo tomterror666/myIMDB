@@ -20,7 +20,8 @@ class LeftViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         navigationController?.navigationBar.backgroundColor = UIColor(white: 0.9, alpha: 1)
         navigationController?.setStatusBarBackgroundColor(UIColor(white: 0.9, alpha: 1))
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "\u{2630}", style: .plain, target: self, action: #selector(handleGoBack))
+        /*navigationItem.backBarButtonItem = UIBarButtonItem(title: "\u{2630}", style: .plain, target: self, action: #selector(handleGoBack))
+        navigationItem.backBarButtonItem?.accessibilityIdentifier = "back_button"*/
         navigationController?.navigationBar.titleTextAttributes = [.font: UIFont(name: "AvenirNextCondensed-Heavy", size: 21)!]
         
         title = "Menu"
@@ -44,11 +45,13 @@ class LeftViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let cell = menuCell, let entry = menuItems?[indexPath.row] {
             cell.textLabel?.text = entry.title
             cell.accessoryType = .disclosureIndicator
+            cell.accessibilityIdentifier = "\(indexPath.row)"
             
             return cell
         }
         
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: menuItems?[indexPath.row].title ?? "")
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         
         return cell
     }

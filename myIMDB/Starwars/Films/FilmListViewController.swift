@@ -58,12 +58,10 @@ class FilmListViewController: UIViewController, UITableViewDelegate, UITableView
             
             provider.fetchAllFilms { error in
                 if let error {
-                    print("Error: \(error)")
+                    Info.show(message: error.localizedDescription, of: .error, in: 0, connect: self.view)
                     
                     return
                 } else {
-                    print("fertich!")
-                    
                     self.loading = false
                     self.tableView?.reloadData()
                 }
@@ -82,17 +80,6 @@ class FilmListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*let cell = tableView.dequeueReusableCell(withIdentifier: filmCellIdentifier)
-        
-        if let cell {
-            cell.textLabel?.text = provider.film(at: indexPath.row)?.title
-            return cell
-        } else {
-            let newCell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: provider.film(at: indexPath.row)?.title ?? "")
-            
-            return newCell
-        }*/
-        
         if films.count > 0 {
             guard indexPath.row < films.count, indexPath.row > -1,
                   let film = provider.film(at: Int(films[indexPath.row])!) else {
@@ -100,10 +87,12 @@ class FilmListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: film.title)
+            cell.accessibilityIdentifier = "\(indexPath.row)"
             
             return cell
         } else {
             let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: provider.film(at: indexPath.row)?.title ?? "")
+            cell.accessibilityIdentifier = "\(indexPath.row)"
             
             return cell
         }

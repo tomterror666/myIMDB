@@ -38,6 +38,7 @@ class VehicleListViewController: UIViewController, UITableViewDelegate, UITableV
         let vehicle = vehicles[indexPath.row]
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: vehicle)
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         cell.isLoading = true
         
         provider.fetchVehicle(withId: vehicle) { fullVehicle, error in

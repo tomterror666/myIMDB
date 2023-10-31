@@ -39,6 +39,7 @@ class SpeciesListViewController: UIViewController, UITableViewDataSource, UITabl
         let species = allSpecies[indexPath.row]
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: species)
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         cell.isLoading = true
         
         provider.fetchSpecies(withId: species) { fullSpecies, error in

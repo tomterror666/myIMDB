@@ -38,6 +38,7 @@ class PlanetListViewController: UIViewController, UITableViewDataSource, UITable
         let planet = planets[indexPath.row]
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: planet)
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         cell.isLoading = true
         
         provider.fetchPlanet(withId: planet) { fullPlanet, error in

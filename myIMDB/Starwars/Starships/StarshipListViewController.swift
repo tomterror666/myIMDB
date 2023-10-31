@@ -38,6 +38,7 @@ class StarshipListViewController: UIViewController, UITableViewDelegate, UITable
         let starship = starships[indexPath.row]
         let cell = LinkTableViewCell.configuredLinkCell(for: tableView, owner: self, with: starship)
         
+        cell.accessibilityIdentifier = "\(indexPath.row)"
         cell.isLoading = true
         
         provider.fetchStarship(withId: starship) { fullStarship, error in
