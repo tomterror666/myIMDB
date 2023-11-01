@@ -84,6 +84,9 @@ final class baseUITests: XCTestCase {
         XCTAssertTrue(app.cells["1"].staticTexts["75 Kg"].exists)
         XCTAssertTrue(app.cells["2"].staticTexts["n/a"].exists)
         XCTAssertTrue(app.cells["3"].staticTexts["gold"].exists)
+        app.cells["9"].tap()
+        XCTAssertTrue(app.navigationBars["Planets"].waitForExistence(timeout: 1))
+        XCTAssertEqual(app.cells.count, 1)
     }
     
     func testOpenPlanetDetails() {
@@ -103,6 +106,9 @@ final class baseUITests: XCTestCase {
         XCTAssertTrue(app.cells["1"].staticTexts["304 days"].exists)
         XCTAssertTrue(app.cells["2"].staticTexts["10.465 km"].exists)
         XCTAssertTrue(app.cells["3"].staticTexts["arid"].exists)
+        app.cells["10"].tap()
+        XCTAssertTrue(app.navigationBars["Characters"].waitForExistence(timeout: 1))
+        XCTAssertEqual(app.cells.count, 1)
     }
     
     func testOpenSpeciesDetails() {
@@ -122,6 +128,9 @@ final class baseUITests: XCTestCase {
         XCTAssertTrue(app.cells["1"].staticTexts["sentient"].exists)
         XCTAssertTrue(app.cells["2"].staticTexts["180 cm"].exists)
         XCTAssertTrue(app.cells["3"].staticTexts["caucasian, black, asian, hispanic"].exists)
+        app.cells["10"].tap()
+        XCTAssertTrue(app.navigationBars["Planets"].waitForExistence(timeout: 1))
+        XCTAssertEqual(app.cells.count, 1)
     }
     
     func testOpenStarshipDetails() {
@@ -141,6 +150,9 @@ final class baseUITests: XCTestCase {
         XCTAssertTrue(app.cells["1"].staticTexts["Corellian Engineering Corporation"].exists)
         XCTAssertTrue(app.cells["2"].staticTexts["unknown"].exists)
         XCTAssertTrue(app.cells["3"].staticTexts["115.0 m"].exists)
+        app.cells["15"].tap()
+        XCTAssertTrue(app.navigationBars["StarWars"].waitForExistence(timeout: 1))
+        XCTAssertEqual(app.cells.count, 1)
     }
     
     func testOpenVehicleDetails() {
@@ -160,6 +172,9 @@ final class baseUITests: XCTestCase {
         XCTAssertTrue(app.cells["1"].staticTexts["Haor Chall Engineering, Baktoid Armor Workshop"].exists)
         XCTAssertTrue(app.cells["2"].staticTexts["unknown"].exists)
         XCTAssertTrue(app.cells["3"].staticTexts["3.5 m"].exists)
+        app.cells["13"].tap()
+        XCTAssertTrue(app.navigationBars["StarWars"].waitForExistence(timeout: 1))
+        XCTAssertEqual(app.cells.count, 1)
     }
     
     func testShowInfoForEmptyListElement() {

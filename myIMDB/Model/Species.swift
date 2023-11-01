@@ -72,5 +72,5 @@ class Species: BaseModel {
     
     @objc var editedAt: String { jsonDict["edited"] as? String ?? "" }
     
-    @objc var url: String { jsonDict["name"] as? String ?? "" }
+    @objc var url: String { jsonDict["url"] as? String ?? "" }
 }

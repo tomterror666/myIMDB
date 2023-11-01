@@ -90,6 +90,8 @@
 		E8D8C3672AF0368B007584D7 /* Formatter_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8C3662AF0368B007584D7 /* Formatter_Test.swift */; };
 		E8D8C3692AF03B4F007584D7 /* Int_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8C3682AF03B4F007584D7 /* Int_Test.swift */; };
 		E8D8C36B2AF03D51007584D7 /* String_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8C36A2AF03D51007584D7 /* String_Test.swift */; };
+		E8D8C36D2AF176DF007584D7 /* films_4.tail in Resources */ = {isa = PBXBuildFile; fileRef = E8D8C36C2AF176DF007584D7 /* films_4.tail */; };
+		E8D8C3712AF1815F007584D7 /* Models_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8C3702AF1815F007584D7 /* Models_Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +199,8 @@
 		E8D8C3662AF0368B007584D7 /* Formatter_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter_Test.swift; sourceTree = "<group>"; };
 		E8D8C3682AF03B4F007584D7 /* Int_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Test.swift; sourceTree = "<group>"; };
 		E8D8C36A2AF03D51007584D7 /* String_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Test.swift; sourceTree = "<group>"; };
+		E8D8C36C2AF176DF007584D7 /* films_4.tail */ = {isa = PBXFileReference; lastKnownFileType = text; path = films_4.tail; sourceTree = "<group>"; };
+		E8D8C3702AF1815F007584D7 /* Models_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models_Test.swift; sourceTree = "<group>"; };
 		FAB1D7EE8A0BF1C88F6FB663 /* Pods-myIMDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myIMDB.release.xcconfig"; path = "Target Support Files/Pods-myIMDB/Pods-myIMDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -468,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D8C34B2AF00523007584D7 /* films_.tail */,
+				E8D8C36C2AF176DF007584D7 /* films_4.tail */,
 				E8D8C34E2AF02400007584D7 /* people_2.tail */,
 				E8D8C3502AF02981007584D7 /* planets_1.tail */,
 				E8D8C3522AF02AFF007584D7 /* species_1.tail */,
@@ -480,6 +485,8 @@
 		E8D8C35D2AF03617007584D7 /* myIMDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				E8D8C36F2AF17FAE007584D7 /* Model */,
+				E8D8C36E2AF17FA0007584D7 /* Provider */,
 				E8D8C3652AF03665007584D7 /* Extensions */,
 				E8D8C35E2AF03617007584D7 /* myIMDBTests.swift */,
 			);
@@ -494,6 +501,21 @@
 				E8D8C36A2AF03D51007584D7 /* String_Test.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E8D8C36E2AF17FA0007584D7 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		E8D8C36F2AF17FAE007584D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8D8C3702AF1815F007584D7 /* Models_Test.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,6 +625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D8C34D2AF00AA5007584D7 /* films_.tail in Resources */,
+				E8D8C36D2AF176DF007584D7 /* films_4.tail in Resources */,
 				E87AC0592AE05F52004FB6CF /* PlanetListViewController.xib in Resources */,
 				E8D8C3572AF02E2F007584D7 /* vehicles_33.tail in Resources */,
 				E8D8C3532AF02AFF007584D7 /* species_1.tail in Resources */,
@@ -760,6 +783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D8C3712AF1815F007584D7 /* Models_Test.swift in Sources */,
 				E8D8C3672AF0368B007584D7 /* Formatter_Test.swift in Sources */,
 				E8D8C3692AF03B4F007584D7 /* Int_Test.swift in Sources */,
 				E8D8C36B2AF03D51007584D7 /* String_Test.swift in Sources */,

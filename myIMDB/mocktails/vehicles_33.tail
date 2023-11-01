@@ -12,8 +12,7 @@
     "vehicle_class": "starfighter",
     "pilots": [],
     "films": [
-        "https://swapi.dev/api/films/4/",
-        "https://swapi.dev/api/films/6/"
+        "https://swapi.dev/api/films/4/"
     ],
     "created": "2014-12-19T17:09:53.584000Z",
     "edited": "2014-12-20T21:30:21.697000Z",
