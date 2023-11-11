@@ -42,7 +42,7 @@ class StarshipListViewController: UIViewController, UITableViewDelegate, UITable
         cell.isLoading = true
         
         provider.fetchStarship(withId: starship) { fullStarship, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return
@@ -61,7 +61,7 @@ class StarshipListViewController: UIViewController, UITableViewDelegate, UITable
         let starship = starships[indexPath.row]
         
         provider.fetchStarship(withId: starship) { fullStarship, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return

@@ -42,7 +42,7 @@ class VehicleListViewController: UIViewController, UITableViewDelegate, UITableV
         cell.isLoading = true
         
         provider.fetchVehicle(withId: vehicle) { fullVehicle, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return
@@ -61,7 +61,7 @@ class VehicleListViewController: UIViewController, UITableViewDelegate, UITableV
         let vehicle = vehicles[indexPath.row]
         
         provider.fetchVehicle(withId: vehicle) { fullVehicle, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return

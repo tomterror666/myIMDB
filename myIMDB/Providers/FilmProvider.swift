@@ -24,7 +24,7 @@ class FilmProvider: NSObject {
     }
     
     func fetchAllFilms(completion: ((Error?) -> Void)?) {
-        if let films, films.count > 0 {
+        if let films = films, films.count > 0 {
             completion?(nil)
         }
         

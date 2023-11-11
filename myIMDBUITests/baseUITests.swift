@@ -73,6 +73,7 @@ final class baseUITests: XCTestCase {
         startTests()
         
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["1"].tap()
         XCTAssertTrue(app.navigationBars["Characters"].waitForExistence(timeout: 1))
@@ -95,6 +96,7 @@ final class baseUITests: XCTestCase {
         startTests()
             
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["2"].tap()
         XCTAssertTrue(app.navigationBars["Planets"].waitForExistence(timeout: 1))
@@ -117,6 +119,7 @@ final class baseUITests: XCTestCase {
         startTests()
             
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["3"].tap()
         XCTAssertTrue(app.navigationBars["Species"].waitForExistence(timeout: 1))
@@ -139,6 +142,7 @@ final class baseUITests: XCTestCase {
         startTests()
             
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["4"].tap()
         XCTAssertTrue(app.navigationBars["Starships"].waitForExistence(timeout: 1))
@@ -161,6 +165,7 @@ final class baseUITests: XCTestCase {
         startTests()
             
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["5"].tap()
         XCTAssertTrue(app.navigationBars["Vehicles"].waitForExistence(timeout: 1))
@@ -183,6 +188,7 @@ final class baseUITests: XCTestCase {
         startTests()
             
         app.cells["3"].tap()
+        sleep(1)
         XCTAssertEqual(app.cells.count, 11)
         app.cells["1"].tap()
         XCTAssertTrue(app.navigationBars["Characters"].waitForExistence(timeout: 1))

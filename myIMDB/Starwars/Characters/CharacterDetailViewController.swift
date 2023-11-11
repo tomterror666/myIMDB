@@ -34,7 +34,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
         
         title = character?.name
         
-        if cellProvider == nil, let characterDetailTableView {
+        if cellProvider == nil, let characterDetailTableView = characterDetailTableView {
             cellProvider = CellProvider(tableView: characterDetailTableView, owner: self, cellType: CharacterDetailType)
         }
     }
@@ -45,7 +45,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let character, let cellProvider else {
+        guard let character = character, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -63,7 +63,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let character, let cellProvider, let vc = cellProvider.vcToOpen(forModel: character, atLine: indexPath.row) else { return }
+        guard let character = character, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: character, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -42,7 +42,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         cell.isLoading = true
         
         provider.fetchCharacter(withId: character) { fullCharacter, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return
@@ -61,7 +61,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         let character = characters[indexPath.row]
         
         provider.fetchCharacter(withId: character) { fullCharacter, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return

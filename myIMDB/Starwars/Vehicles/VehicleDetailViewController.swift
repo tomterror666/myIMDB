@@ -23,7 +23,7 @@ class VehicleDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if cellProvider == nil, let vehicleDetailTableView {
+        if cellProvider == nil, let vehicleDetailTableView = vehicleDetailTableView {
             cellProvider = CellProvider(tableView: vehicleDetailTableView, owner: self, cellType: VehicleDetailType)
         }
     }
@@ -34,7 +34,7 @@ class VehicleDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let vehicle, let cellProvider else {
+        guard let vehicle = vehicle, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -52,7 +52,7 @@ class VehicleDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let vehicle, let cellProvider, let vc = cellProvider.vcToOpen(forModel: vehicle, atLine: indexPath.row) else { return }
+        guard let vehicle = vehicle, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: vehicle, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }

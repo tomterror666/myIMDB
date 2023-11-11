@@ -23,7 +23,7 @@ class SpeciesDetailViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if cellProvider == nil, let speciesDetailsTableView {
+        if cellProvider == nil, let speciesDetailsTableView = speciesDetailsTableView {
             cellProvider = CellProvider(tableView: speciesDetailsTableView, owner: self, cellType: SpeciesDetailType)
         }
     }
@@ -34,7 +34,7 @@ class SpeciesDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let species, let cellProvider else {
+        guard let species = species, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -52,7 +52,7 @@ class SpeciesDetailViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let species, let cellProvider, let vc = cellProvider.vcToOpen(forModel: species, atLine: indexPath.row) else { return }
+        guard let species = species, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: species, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }

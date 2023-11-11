@@ -32,7 +32,7 @@ class PlanetDetailsViewController: UIViewController, UITableViewDataSource, UITa
         
         title = planet?.name
         
-        if cellProvider == nil, let planetDetailsTableView {
+        if cellProvider == nil, let planetDetailsTableView = planetDetailsTableView {
             cellProvider = CellProvider(tableView: planetDetailsTableView, owner: self, cellType: PlanetDetailType)
         }
     }
@@ -44,7 +44,7 @@ class PlanetDetailsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let planet, let cellProvider else {
+        guard let planet = planet, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -62,7 +62,7 @@ class PlanetDetailsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let planet, let cellProvider, let vc = cellProvider.vcToOpen(forModel: planet, atLine: indexPath.row) else { return }
+        guard let planet = planet, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: planet, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }

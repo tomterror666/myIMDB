@@ -42,7 +42,7 @@ class PlanetListViewController: UIViewController, UITableViewDataSource, UITable
         cell.isLoading = true
         
         provider.fetchPlanet(withId: planet) { fullPlanet, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return
@@ -61,7 +61,7 @@ class PlanetListViewController: UIViewController, UITableViewDataSource, UITable
         let planet = planets[indexPath.row]
         
         provider.fetchPlanet(withId: planet) { fullPlanet, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return

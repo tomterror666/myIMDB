@@ -43,7 +43,7 @@ class SpeciesListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.isLoading = true
         
         provider.fetchSpecies(withId: species) { fullSpecies, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return
@@ -62,7 +62,7 @@ class SpeciesListViewController: UIViewController, UITableViewDataSource, UITabl
         let species = allSpecies[indexPath.row]
         
         provider.fetchSpecies(withId: species) { fullSpecies, error in
-            if let error {
+            if let error = error {
                 print("Error: \(error)")
                 
                 return

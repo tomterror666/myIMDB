@@ -57,7 +57,7 @@ class FilmListViewController: UIViewController, UITableViewDelegate, UITableView
             loading = true
             
             provider.fetchAllFilms { error in
-                if let error {
+                if let error = error {
                     Info.show(message: error.localizedDescription, of: .error, in: 0, connect: self.view)
                     
                     return

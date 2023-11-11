@@ -23,7 +23,7 @@ class StarshipDetailViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if cellProvider == nil, let starshipDetailTableView {
+        if cellProvider == nil, let starshipDetailTableView = starshipDetailTableView {
             cellProvider = CellProvider(tableView: starshipDetailTableView, owner: self, cellType: StarshipDetailType)
         }
     }
@@ -34,7 +34,7 @@ class StarshipDetailViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let starship, let cellProvider else {
+        guard let starship = starship, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -52,7 +52,7 @@ class StarshipDetailViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let starship, let cellProvider, let vc = cellProvider.vcToOpen(forModel: starship, atLine: indexPath.row) else { return }
+        guard let starship = starship, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: starship, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }

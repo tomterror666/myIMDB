@@ -34,7 +34,7 @@ class FilmDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         title = film?.title
         
-        if cellProvider == nil, let filmDetailsTableView {
+        if cellProvider == nil, let filmDetailsTableView = filmDetailsTableView {
             cellProvider = CellProvider(tableView: filmDetailsTableView, owner: self, cellType: FilmDetailType)
         }
     }
@@ -45,7 +45,7 @@ class FilmDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let film, let cellProvider else {
+        guard let film = film, let cellProvider = cellProvider else {
             return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
@@ -59,7 +59,7 @@ class FilmDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let film, let cellProvider, let vc = cellProvider.vcToOpen(forModel: film, atLine: indexPath.row) else { return }
+        guard let film = film, let cellProvider = cellProvider, let vc = cellProvider.vcToOpen(forModel: film, atLine: indexPath.row) else { return }
         
         navigationController?.pushViewController(vc, animated: true)
     }
