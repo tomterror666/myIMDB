@@ -595,6 +595,7 @@
 					};
 					E8D8C35B2AF03617007584D7 = {
 						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = E85CADD72AE058ED00E85763;
 					};
 				};
 			};
@@ -1056,6 +1057,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myIMDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/myIMDB";
 			};
 			name = Debug;
 		};
@@ -1073,6 +1075,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myIMDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/myIMDB";
 			};
 			name = Release;
 		};
