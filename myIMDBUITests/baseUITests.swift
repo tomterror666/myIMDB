@@ -29,7 +29,7 @@ final class baseUITests: XCTestCase {
     }
     
     func startTests() {
-        guard let app else { return }
+        guard let app = app else { return }
         
         app.buttons["menu_button"].tap()
         XCTAssertTrue(app.navigationBars["Menu"].waitForExistence(timeout: 1))
@@ -41,7 +41,7 @@ final class baseUITests: XCTestCase {
     // MARK: - test methods
     
     func testAppMenu() throws {
-        guard let app else { return }
+        guard let app = app else { return }
         
         app.buttons["menu_button"].tap()
         XCTAssertTrue(app.navigationBars["Menu"].waitForExistence(timeout: 1))
@@ -54,7 +54,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenStarwars() throws {
-        guard let app else { return }
+        guard let app = app else { return }
         
         startTests()
         
@@ -68,7 +68,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenCharacterDetails() {
-        guard let app else { return }
+        guard let app = app else { return }
         
         startTests()
         
@@ -91,7 +91,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenPlanetDetails() {
-        guard let app else { return }
+        guard let app = app else { return }
             
         startTests()
             
@@ -114,7 +114,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenSpeciesDetails() {
-        guard let app else { return }
+        guard let app = app else { return }
             
         startTests()
             
@@ -137,7 +137,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenStarshipDetails() {
-        guard let app else { return }
+        guard let app = app else { return }
             
         startTests()
             
@@ -160,7 +160,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testOpenVehicleDetails() {
-        guard let app else { return }
+        guard let app = app else { return }
             
         startTests()
             
@@ -183,7 +183,7 @@ final class baseUITests: XCTestCase {
     }
     
     func testShowInfoForEmptyListElement() {
-        guard let app else { return }
+        guard let app = app else { return }
             
         startTests()
             
