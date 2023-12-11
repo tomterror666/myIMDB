@@ -8,24 +8,31 @@
 import UIKit
 
 class Character: BaseModel {
-    static let numberOfDetails = 15
-    
+    /// Name of the character
     @objc var name: String { jsonDict["name"] as? String ?? "" }
     
+    /// Height of the character in **cm**
     @objc var height: Int { Int(jsonDict["height"] as? String ?? "") ?? 0 }
     
+    /// Mass of the character in **kg**
     @objc var mass: Int { Int(jsonDict["mass"] as? String ?? "") ?? 0 }
     
+    /// Hair color of the character
     @objc var hairColor: String { jsonDict["hair_color"] as? String ?? "" }
     
+    /// Skin color of the character
     @objc var skinColor: String { jsonDict["skin_color"] as? String ?? "" }
     
+    /// Eye color of the character
     @objc var eyeColor: String { jsonDict["eye_color"] as? String ?? "" }
     
+    /// Birth year of the character using the in-universe standard of **BBY** or **ABY** - **B**efore the **B**attle of **Y**arvin or **A**fter the **B**attle of **Y**arwin
     @objc var birthYear: String { jsonDict["birth_year"] as? String ?? "" }
     
+    /// Gender of the character
     @objc var gender: String { jsonDict["gender"] as? String ?? "" }
     
+    /// Homeworld of the character as ``Planet`` id
     @objc var homeworld: [String] {
         get {
             if let home = jsonDict["homeworld"] as? String {
@@ -38,6 +45,7 @@ class Character: BaseModel {
         }
     }
     
+    /// List of films where that character is a member of as array of ``Film`` id
     @objc var films: [String] {
         get {
             let films = jsonDict["films"] as? [String]  ?? [String]()
@@ -52,6 +60,7 @@ class Character: BaseModel {
         }
     }
     
+    /// List of species the character belongs to as array of ``Species`` id
     @objc var species: [String] {
         get {
             let specieses = jsonDict["species"] as? [String]  ?? [String]()
@@ -66,6 +75,7 @@ class Character: BaseModel {
         }
     }
     
+    /// List of vehicles the character is able to use as array of ``Vehicle`` id
     @objc var vehicles: [String] {
         get {
             let vehicles = jsonDict["vehicles"] as? [String] ?? [String]()
@@ -80,6 +90,7 @@ class Character: BaseModel {
         }
     }
     
+    /// List of starships the character is able to fly as array of ``Starship`` id
     @objc var starships: [String] {
         get {
             let starships = jsonDict["starships"] as? [String] ?? [String]()
@@ -94,9 +105,12 @@ class Character: BaseModel {
         }
     }
     
+    /// Date this entry in **SWAPI** was created
     @objc var createdAt: String { jsonDict["created"] as? String ?? "" }
     
+    /// Date this entry in **SWAPI** was edited the last time
     @objc var editedAt: String { jsonDict["edited"] as? String ?? "" }
     
+    /// Url to this character entry in **SWAPI** as string
     @objc var url: String { jsonDict["url"] as? String ?? "" }
 }

@@ -41,7 +41,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDataSource, UI
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Character.numberOfDetails - 1    // -1 because character's name is displayed in navigation bar
+        return CharacterDetailType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
