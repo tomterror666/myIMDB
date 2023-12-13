@@ -8,6 +8,7 @@
 import Foundation
 
 extension Formatter {
+    /// Format a decimal number with a special localized grouping separator 
     static let withSeparator: NumberFormatter = {
         let formatter = NumberFormatter()
         

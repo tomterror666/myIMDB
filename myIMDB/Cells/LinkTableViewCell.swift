@@ -7,18 +7,22 @@
 
 import UIKit
 
+/// Cell for displaying a link
 class LinkTableViewCell: UITableViewCell {
+    /// Cell identifier used for identifiing this cell in table view's cell queue
     static let cellIdentifier = "LinkTableViewCell"
     
-    @IBOutlet var titleLabel: UILabel?
-    @IBOutlet var loadingView: UIActivityIndicatorView?
+    @IBOutlet var titleLabel: UILabel?                      /// Title label outlet
+    @IBOutlet var loadingView: UIActivityIndicatorView?     /// Loading view outlet
     
+    /// Value displayed on the link label
     var linkTitle: String? {
         didSet {
             titleLabel?.text = linkTitle
         }
     }
     
+    /// Loading state of this cell - while loading an acitivity indicator is displayed
     var isLoading: Bool = false {
         didSet {
             if isLoading {
@@ -33,6 +37,7 @@ class LinkTableViewCell: UITableViewCell {
         }
     }
 
+    /// Overriden func **awakeFromNib**
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,6 +45,13 @@ class LinkTableViewCell: UITableViewCell {
         isLoading = false
     }
     
+    /// Static function to create a configured link cell
+    ///
+    /// - parameter tableView:  the corresponding table view
+    /// - parameter owner:      the corresponding view controller as owner
+    /// - parameter title:      value to be displayed as link in this table view cell
+    ///
+    /// - Returns:  dequeued and configured table view cell
     static func configuredLinkCell(for tableView: UITableView, owner: UIViewController, with title: String) -> LinkTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LinkTableViewCell.cellIdentifier) as? LinkTableViewCell
         

@@ -41,7 +41,7 @@ class FilmDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Film.numberOfDetails - 1 // -1 because film's title is displayed in navigation bar
+        return FilmDetailType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -30,7 +30,7 @@ class SpeciesDetailViewController: UIViewController, UITableViewDataSource, UITa
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Species.numberOfDetails - 1    // -1 because character's name is displayed in navigation bar
+        return SpeciesDetailType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

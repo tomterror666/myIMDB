@@ -8,12 +8,19 @@
 import UIKit
 import Alamofire
 
+/// Client for obtaining data using resful http calls
 class HttpClient: NSObject {
+    /// The base path to **SWAPI** api
     fileprivate let apiBaseUrl = "https://swapi.dev/api/"
     
+    /// Singelton for common usage
     static let sharedObject = HttpClient()
     
-
+    /// Restful GET call
+    ///
+    /// - parameter path:       Path of the restful GET call
+    /// - parameter parameter:  Query parameters
+    /// - parameter completion: Completion - called when finished with data or error
     func Get(withPath path: String, withParameters parameter: [String: Any]?, completion: ((_ responseObject: Any?, _ error: Error?) -> Void)?) {
         if isUITest() && isMoctailAvailable(forUrl: path), let mocktailData = mocktailData(forUrl: path) {
             do {
@@ -38,10 +45,20 @@ class HttpClient: NSObject {
         }
     }
     
+    /// Restful HEAD call
+    ///
+    /// - parameter path:       Path of the restful HEAD call
+    /// - parameter parameter:  Query parameters
+    /// - parameter completion: Completion - called when on data or error
     func Head(inArea area: String, completion: (_ responseObject: Any?, _ error: Error?) -> Void) {
         
     }
     
+    /// Restful POST call
+    ///
+    /// - parameter path:       Path of the restful POST call
+    /// - parameter parameter:  Query parameters
+    /// - parameter completion: Completion - called when on data or error
     func Post(inArea area: String, withParameters parameter: [String: Any]?, completion: (_ responseObject: Any?, _ error: Error?) -> Void) {
         
     }

@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-
+    /// Change the status bar background color
+    ///
+    /// - parameter backgroundColor:    New background color of status bar
     func setStatusBarBackgroundColor(_ backgroundColor: UIColor) {
         let statusBarFrame: CGRect
         if #available(iOS 13.0, *) {

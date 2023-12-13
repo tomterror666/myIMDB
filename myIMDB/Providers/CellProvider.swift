@@ -7,20 +7,34 @@
 
 import UIKit
 
+/// Class for getting configured table view cells
 class CellProvider: NSObject {
-    
+    /// Table view where the cell should be displayed
     var tableView: UITableView
     
+    /// View controller where the table view and this cell are belong to
     var owner: UIViewController
     
+    /// This cell type array specifiy the number of cells and the cell configuration depending of number in array
     var cellTypeArray: [CellType]
     
+    /// Constructor
+    ///
+    /// - parameter tableView:  Table view where the cell should be displayed
+    /// - parameter owner:      View controller where the table view and this cell are belong to
+    /// - parameter cellType:   This cell type array specifiy the number of cells and the cell configuration depending of number in array
     init(tableView: UITableView, owner: UIViewController, cellType: [CellType]) {
         self.tableView = tableView
         self.owner = owner
         self.cellTypeArray = cellType
     }
 
+    /// Get a dequeued and configured table view cell which could be diplayed in table view
+    ///
+    /// - parameter model:  The model where the data for displaying is taken from
+    /// - parameter line:   Number of the cell
+    ///
+    /// - Returns: Dequeued and configured table view cell
     func cell(forModel model: NSObject, atLine line: Int) -> UITableViewCell {
         let cellType = cellTypeArray[line]
         
@@ -82,6 +96,12 @@ class CellProvider: NSObject {
         return UITableViewCell(style: .default, reuseIdentifier: "")
     }
     
+    /// Get the view controller to push on navigation stack
+    ///
+    /// - parameter model:  The model where the data for displaying is taken from
+    /// - parameter line:   Number of the cell
+    ///
+    /// - Returns: View controller for pushing on navigation stack
     func vcToOpen(forModel model: NSObject, atLine line: Int) -> UIViewController? {
         if model is Character {
             return characterVCToOpen(forModel: model, atLine: line)

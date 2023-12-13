@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Class for a character in a film
 class Character: BaseModel {
     /// Name of the character
     @objc var name: String { jsonDict["name"] as? String ?? "" }

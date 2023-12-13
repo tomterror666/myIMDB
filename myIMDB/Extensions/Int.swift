@@ -8,6 +8,7 @@
 import Foundation
 
 extension Int {
+    /// Converting an integer value to ``String`` by adding a localized grouping separator
     var withSeparator: String {
         return Formatter.withSeparator.string(for: self) ?? ""
     }
